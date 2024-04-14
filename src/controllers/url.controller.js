@@ -1,0 +1,44 @@
+import url from "url";
+import { prisma } from "../db.js";
+
+export const generateShortUrl = async (req, res) => {
+  const { url } = req.body;
+  const shortUrl = Math.random().toString(36).substring(2, 7);
+
+  try {
+    const data = await prisma.link.create({
+      data: {
+        url,
+        shortUrl,
+        user_id: req.user.id,
+      },
+    });
+    res.status(200).json({ data });
+  } catch (error) {
+    console.log(error)
+    return res.status(500).send({ error });
+  }
+};
+
+export const redirect = async (req, res) => {
+  const { id } = req.params;
+
+  const data = await prisma.link.findUnique({
+    where: { shortUrl: id },
+  });
+
+  if (!data) {
+    return res.status(404).json({ message: "URL not Found" });
+  }
+  const parsedUrl = url.parse(data.url);
+
+  let redirectUrl;
+
+  if (parsedUrl.protocol) {
+    redirectUrl = data.url;
+  } else {
+    redirectUrl = `https://${data.url}`;
+  }
+
+  return res.redirect(redirectUrl);
+};
