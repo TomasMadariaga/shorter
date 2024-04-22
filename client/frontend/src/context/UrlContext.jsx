@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
-import { generateUrl } from "../api/url";
+import { createContext, useContext, useState } from "react";
+import { generateUrl, getUrl, deleteUrl } from "../api/url";
 
 export const UrlContext = createContext();
 
@@ -12,15 +12,39 @@ export const useUrl = () => {
 };
 
 export const UrlProvider = ({ children }) => {
+  const [errors, setErrors] = useState([]);
+
   const create = async (url) => {
     try {
       const res = await generateUrl(url);
-      return res.data.data.shortUrl
+      return res.data.data.shortUrl;
+    } catch (error) {
+      console.log(error);
+      setErrors([error.response.data.message]);
+    }
+  };
+
+  const get = async () => {
+    try {
+      const res = await getUrl();
+      return res.data.data;
+    } catch (error) {
+      console.log(error);
+      setErrors([error.response.data.message]);
+    }
+  };
+
+  const deleteLink = async (id) => {
+    try {
+      const res = await deleteUrl(id);
+      return res;
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <UrlContext.Provider value={{ create }}>{children}</UrlContext.Provider>
+    <UrlContext.Provider value={{ create, get, deleteLink, errors }}>
+      {children}
+    </UrlContext.Provider>
   );
 };

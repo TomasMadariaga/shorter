@@ -9,16 +9,17 @@ export const Register = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
+    if (isAuthenticated) navigate("/shorter");
   }, [isAuthenticated]);
+  
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
+    <div className="flex h-[calc(100vh-100px)] items-center justify-center bg-gray-700">
     <div className="bg-zinc-800 max-w-md p-10 rounded-md">
-      <h1 className="text-2xl font-bold">Register</h1>
+      <h1 className="text-2xl font-bold text-white">Register</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -47,9 +48,9 @@ export const Register = () => {
         )}
         <button className="bg-sky-500 text-white px-4 py-2 rounded-md my-2" type="submit">Register</button>
       </form>
-      <p className="flex gap-x-2 justify-between">
+      <p className="flex gap-x-2 justify-between text-white">
         Already have an account?{" "}
-        <Link to="/" className="text-sky-500">
+        <Link to="/" className="text-white hover:text-sky-500 hover:underline hover:underline-offset-4">
           Login
         </Link>
       </p>

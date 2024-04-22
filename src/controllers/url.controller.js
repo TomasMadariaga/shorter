@@ -15,9 +15,31 @@ export const generateShortUrl = async (req, res) => {
     });
     res.status(200).json({ data });
   } catch (error) {
-    console.log(error)
     return res.status(500).send({ error });
   }
+};
+
+export const getLinks = async (req, res) => {
+  try {
+    const data = await prisma.link.findMany({
+      where: {
+        user_id: req.user.id,
+      },
+    });
+    res.status(200).json({ data });
+  } catch (error) {
+    return res.status(500).send({ error });
+  }
+};
+
+export const deleteLink = async (req, res) => {
+  const deletedLink = await prisma.link.delete({
+    where: { id: parseInt(req.params.id) },
+  });
+  if (!deleteLink) {
+    res.status(404).send("Link not found");
+  }
+  res.json({ deletedLink });
 };
 
 export const redirect = async (req, res) => {

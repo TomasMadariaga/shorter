@@ -13,13 +13,13 @@ export const Home = () => {
       }
     };
     verify();
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <div className="h-4/5">
       <div className="bg-gray-700 p-8 flex w-full h-full justify-center items-center">
         <h2 className="text-zinc-200 text-xl">
-          You need to sign in to use Shorter!{" "}
+          You need to sign in to use Shortener!{" "}
           <Link className="font-bold underline underline-offset-8" to="/login">
             Sign in
           </Link>

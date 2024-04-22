@@ -10,6 +10,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
 import { UrlProvider } from "./context/UrlContext";
+import { Dashboard } from "./pages/Dashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/shorter" element={<Shorter />}></Route>
               </Route>
               <Route path="/:id" element={<Redirect />}></Route>

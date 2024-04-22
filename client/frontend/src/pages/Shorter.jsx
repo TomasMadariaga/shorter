@@ -43,9 +43,9 @@ export const Shorter = () => {
   // };
 
   return (
-    <div className="flex items-center bg-gray-800 justify-center w-full h-4/5">
+    <div className="flex items-center bg-gray-700 justify-center w-full h-4/5">
       <main className="p-5 text-white">
-        <h1 className="text-3xl font-bold text-center mb-8">Shorter</h1>
+        <h1 className="text-3xl font-bold text-center mb-8">Shortener</h1>
         <div className="flex justify-center">
           <form onSubmit={onSubmit} className="flex items-center space-x-4">
             <input
@@ -53,7 +53,7 @@ export const Shorter = () => {
               ref={inputRef}
               {...register("url", { required: true })}
               placeholder="URL"
-              className="px-4 py-2 rounded-md border border-gray-600 bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 rounded-md border border-gray-500 bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               type="submit"
