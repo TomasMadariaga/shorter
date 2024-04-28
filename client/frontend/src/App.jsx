@@ -25,7 +25,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/shorter" element={<Shorter />}></Route>
               </Route>
-              <Route path="/:id" element={<Redirect />}></Route>
+              <Route path="/:id" element={<Redirect />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
             </Routes>

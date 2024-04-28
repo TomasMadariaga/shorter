@@ -3,7 +3,9 @@ import {
   generateShortUrl,
   redirect,
   getLinks,
-  deleteLink
+  getLink,
+  deleteLink,
+  updateShortLinkClick,
 } from "../controllers/url.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 
@@ -13,6 +15,10 @@ urlRoutes.post("/", authRequired, generateShortUrl);
 
 urlRoutes.get("/get", authRequired, getLinks);
 
-urlRoutes.delete("/:id", authRequired, deleteLink)
+urlRoutes.get("/get/:id", getLink);
+
+urlRoutes.put("/:id", updateShortLinkClick);
+
+urlRoutes.delete("/:id", authRequired, deleteLink);
 
 urlRoutes.get("/:id", redirect);

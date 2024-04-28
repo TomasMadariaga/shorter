@@ -32,6 +32,34 @@ export const getLinks = async (req, res) => {
   }
 };
 
+export const getLink = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await prisma.link.findUnique({
+      where: {
+        shortUrl: id,
+      },
+    });
+    res.status(200).json({ data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateShortLinkClick = async (req, res) => {
+  try {
+    const response = await prisma.link.update({
+      where: {
+        shortUrl: req.params.id,
+      },
+      data: { clicks: req.body.clicks + 1 },
+    });
+    res.status(200).json({ response });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
+
 export const deleteLink = async (req, res) => {
   const deletedLink = await prisma.link.delete({
     where: { id: parseInt(req.params.id) },
@@ -62,5 +90,5 @@ export const redirect = async (req, res) => {
     redirectUrl = `https://${data.url}`;
   }
 
-  return res.redirect(redirectUrl);
+  return res.json({redirectUrl})
 };

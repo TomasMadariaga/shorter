@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 // import Cookies from "js-cookie";
 import { useUrl } from "../context/UrlContext";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 export const Shorter = () => {
   const inputRef = useRef();
@@ -67,13 +68,14 @@ export const Shorter = () => {
           <div className="flex justify-center mt-4">
             <div className="flex items-center space-x-2">
               <span>
-                <a
+                <Link className="text-blue-500 hover:underline" to={`/${URL}`}>{`http://localhost:5173/${URL}`}</Link>
+                {/* <a
                   id="url"
                   href={`http://localhost:3000/u/${URL}`}
                   className="text-blue-500 hover:underline"
                 >
                   {`http://localhost:3000/u/${URL}`}
-                </a>
+                </a> */}
               </span>
             </div>
           </div>
