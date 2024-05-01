@@ -6,12 +6,7 @@ import { authRoutes } from "./routes/auth.routes.js";
 
 export const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // const corsOptions = {
 //   origin: function (origin, callback) {
@@ -24,8 +19,6 @@ app.use(
 //   credentials: true,
 // };
 // app.use(cors(corsOptions));
-
-
 
 // app.options("*", cors());
 
