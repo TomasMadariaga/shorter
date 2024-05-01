@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "shorter.railway.internal",
+  baseURL: "http://localhost:3000/",
   withCredentials: true,
 });
 
