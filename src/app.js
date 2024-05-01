@@ -6,24 +6,24 @@ import { authRoutes } from "./routes/auth.routes.js";
 
 export const app = express();
 
-app.use(cors());
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin || "http://localhost:5173" === origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS Policity"));
-//     }
-//   },
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || "http://localhost:5173" === origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS Policity"));
+    }
+  },
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
-// app.options("*", cors());
+app.options("*", cors());
 
 app.use(express.json());
 app.use(cookieParser());
+// app.use(cors());
 
 app.use("/u", urlRoutes);
 app.use("/auth", authRoutes);
