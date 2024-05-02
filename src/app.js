@@ -7,19 +7,14 @@ import { authRoutes } from "./routes/auth.routes.js";
 export const app = express();
 
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || "http://localhost:5173" === origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS Policity"));
-    }
-  },
-  credentials: true,
-};
-app.use(cors(corsOptions));
 
-app.options("*", cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
