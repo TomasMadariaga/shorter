@@ -6,13 +6,11 @@ import { authRoutes } from "./routes/auth.routes.js";
 
 export const app = express();
 
-
-
 app.use(
   cors({
     origin: ["http://localhost:5173"],
     credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 
