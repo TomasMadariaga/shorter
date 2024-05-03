@@ -5,7 +5,7 @@
 
 */
 -- AlterTable
-ALTER TABLE `link` ADD COLUMN `user_id` INTEGER NOT NULL;
+ALTER TABLE `Link` ADD COLUMN `user_id` INTEGER NOT NULL;
 
 -- AddForeignKey
 ALTER TABLE `Link` ADD CONSTRAINT `Link_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
