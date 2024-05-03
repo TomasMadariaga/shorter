@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `Link` IF NOT EXISTS(
+CREATE TABLE `Link`(
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `url` VARCHAR(191) NOT NULL,
     `shortUrl` VARCHAR(191) NOT NULL,
