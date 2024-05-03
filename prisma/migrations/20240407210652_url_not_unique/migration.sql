@@ -1,2 +1,2 @@
 -- DropIndex
-DROP INDEX `Link_url_key` ON `link`;
+-- DROP INDEX `Link_url_key` ON `link`;
