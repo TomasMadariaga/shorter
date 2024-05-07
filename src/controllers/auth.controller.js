@@ -29,7 +29,7 @@ export const register = async (req, res) => {
     // SI NO FUNCIONA PROBAR SELECCIONANDO EL USUARIO GUARDADO DESDE ACA
     const token = await createAccessToken({ id: newUser.id });
 
-    res.cookie("token", token, {domain: '.shortener-frontend-one.vercel.app'});
+    res.cookie("token", token, {domain: '//shortener-frontend-one.vercel.app'});
 
     res.json({
       id: newUser.id,
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     }
 
     const token = await createAccessToken({ id: userFound.id });
-    res.cookie("token", token, {domain: '.shortener-frontend-one.vercel.app'});
+    res.cookie("token", token, {domain: '//shortener-frontend-one.vercel.app'});
 
     res.json({
       id: userFound.id,
