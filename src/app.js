@@ -19,4 +19,4 @@ app.use(cookieParser());
 // app.use(cors());
 
 app.use("/u", urlRoutes);
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
