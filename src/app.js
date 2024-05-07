@@ -8,7 +8,7 @@ export const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://shortener-frontend-one.vercel.app", "shortener-production-1fa3.up.railway.app"],
+    origin: ["http://localhost:5173", "https://shortener-frontend-one.vercel.app", "https://shortener-production-1fa3.up.railway.app"],
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
