@@ -13,4 +13,4 @@ export const authRoutes = Router();
 authRoutes.post("/register", validateSchema(registerSchema), register);
 authRoutes.post("/login", validateSchema(loginSchema), login);
 authRoutes.post("/logout", logout);
-authRoutes.get("/", verifyToken);
+authRoutes.get("/verify", verifyToken);
