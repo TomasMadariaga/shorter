@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: 'https://shortener-production-1fa3.up.railway.app/'
+    origin: ['https://shortener-production-1fa3.up.railway.app']
   })
 );
 

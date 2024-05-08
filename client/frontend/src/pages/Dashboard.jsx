@@ -15,7 +15,6 @@ export const Dashboard = () => {
     const getUrl = async () => {
       const data = await get();
       setUrl(data);
-      console.log(data)
     };
     getUrl();
   }, [url]);
