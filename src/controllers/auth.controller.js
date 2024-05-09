@@ -29,7 +29,7 @@ export const register = async (req, res) => {
     // SI NO FUNCIONA PROBAR SELECCIONANDO EL USUARIO GUARDADO DESDE ACA
     const token = await createAccessToken({ id: newUser.id });
 
-    res.cookie("token", token, {domain: '.app', path: '/', secure: true});
+    res.cookie("token", token);
 
     res.json({
       id: newUser.id,
@@ -59,14 +59,13 @@ export const login = async (req, res) => {
     }
 
     const token = await createAccessToken({ id: userFound.id });
-    res.cookie("token", token, {domain: '.app', path: '/', secure: true});
+    res.cookie("token", token);
 
     res.json({
       id: userFound.id,
       email: userFound.email,
       username: userFound.username,
     });
-    console.log(token)
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
