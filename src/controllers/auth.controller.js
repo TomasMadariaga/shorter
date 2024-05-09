@@ -66,6 +66,7 @@ export const login = async (req, res) => {
       email: userFound.email,
       username: userFound.username,
     });
+    console.log(token)
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
