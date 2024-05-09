@@ -76,6 +76,7 @@ export const logout = async (req, res) => {
     expires: new Date(0),
   });
 
+  req.session.destroy()
   return res.sendStatus(200);
 };
 
