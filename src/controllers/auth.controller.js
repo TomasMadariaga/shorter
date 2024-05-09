@@ -72,19 +72,11 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  const { token } = req.cookies;
-  try {
-    if (token) {
-      res.cookie("token", "", {
-        expires: new Date(0),
-      });
+  res.cookie("token", "", {
+    expires: new Date(0),
+  });
 
-      await req.session.destroy();
-      return res.sendStatus(200);
-    }
-  } catch (error) {
-    res.status(500).json({ message: e.message });
-  }
+  return res.sendStatus(200);
 };
 
 export const verifyToken = async (req, res) => {
