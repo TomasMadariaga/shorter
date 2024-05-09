@@ -29,7 +29,7 @@ export const register = async (req, res) => {
     // SI NO FUNCIONA PROBAR SELECCIONANDO EL USUARIO GUARDADO DESDE ACA
     const token = await createAccessToken({ id: newUser.id });
 
-    res.cookie("token", token, {domain: '.app', path: '/', secure: true});
+    res.cookie("token", token, { domain: ".app", path: "/", secure: true });
 
     res.json({
       id: newUser.id,
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     }
 
     const token = await createAccessToken({ id: userFound.id });
-    res.cookie("token", token, {domain: '.app', path: '/', secure: true});
+    res.cookie("token", token, { domain: ".app", path: "/", secure: true });
 
     res.json({
       id: userFound.id,
@@ -74,6 +74,8 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   res.cookie("token", "", {
     expires: new Date(0),
+    domain: ".app",
+    secure: true,
   });
   return res.sendStatus(200);
 };
